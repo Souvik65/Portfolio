@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #c8ff00;
+  --color-background-light: #f8f8f5;
+  --color-background-dark: #1f230f;
+  --color-outline-variant: #434933;
+  --color-surface-container-high: #2a2a2a;
+  --color-primary-fixed: #c8ff00;
+  --color-surface-variant: #353534;
+  --color-surface-container-lowest: #0e0e0e;
+  --color-on-primary: #273500;
+  --color-surface-container: #201f1f;
+  --color-primary-container: #c8ff00;
+  --color-secondary-fixed-dim: #c6c6c7;
+  --color-on-secondary-fixed: #1a1c1c;
+  --color-on-tertiary-container: #9c5006;
+  --color-on-secondary-fixed-variant: #454747;
+  --color-on-background: #e5e2e1;
+  --color-tertiary-fixed: #ffdcc6;
+  --color-inverse-primary: #4f6600;
+  --color-on-tertiary-fixed: #301400;
+  --color-inverse-surface: #e5e2e1;
+  --color-tertiary-container: #ffdcc6;
+  --color-surface-tint: #c8ff00;
+  --color-tertiary: #ffffff;
+  --color-inverse-on-surface: #313030;
+  --color-on-primary-container: #546d00;
+  --color-secondary: #c6c6c7;
+  --color-secondary-container: #454747;
+  --color-on-primary-fixed-variant: #3b4d00;
+  --color-surface-container-highest: #353534;
+  --color-on-secondary-container: #b4b5b5;
+  --color-on-tertiary: #4f2500;
+  --color-on-tertiary-fixed-variant: #713700;
+  --color-surface: #131313;
+  --color-on-surface-variant: #c4caac;
+  --color-primary-fixed-dim: #c8ff00;
+  --color-error: #ffb4ab;
+  --color-error-container: #93000a;
+  --color-outline: #8e9479;
+  --color-on-primary-fixed: #161f00;
+  --color-surface-bright: #3a3939;
+  --color-on-surface: #e5e2e1;
+  --color-tertiary-fixed-dim: #ffb784;
+  --color-surface-container-low: #1c1b1b;
+  --color-secondary-fixed: #e2e2e2;
+  --color-background: #131313;
+  --color-on-secondary: #2f3131;
+  --color-surface-dim: #131313;
+  --color-on-error: #690005;
+  --color-on-error-container: #ffdad6;
+
+  --font-display: var(--font-space);
+  --font-headline: var(--font-space);
+  --font-body: var(--font-inter);
+  --font-label: var(--font-inter);
+
+  --animate-marquee: marquee 20s linear infinite;
+  --animate-spin-slow: spin-slow 8s linear infinite;
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+}
+
+@layer utilities {
+  .text-stroke {
+    -webkit-text-stroke: 1px rgba(229, 226, 225, 0.3);
+    color: transparent;
+  }
+  .grain-overlay {
+    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBXZXgj0pYekhToudYBbJka07cnc7uL44YH6bswPVywut7sapkqMrvx3SrHtw8x3DwvFR9JgRnxKf2WIeWM_XjnJabigC4M-prYWG5yqYd3jGCyY9R2EPiiU-Ua3d_0qOEqyvL44gU3DlM9k-qKV4NT8buFL6ERqeB_oflwgyqe4Mv_roqYLsSmTFG17KIRtur5IjeCsmrGc60Fb5hdwkybnwFz8xcxrH7IFfPiD7e_7ayu67Nc46GT8wFHFS_4ft4gLXF1WLNtEuM');
+  }
+}
+
+::selection {
+  background: #c0f500;
+  color: #161f00;
+}
