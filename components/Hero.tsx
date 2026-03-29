@@ -1,34 +1,32 @@
-'use client';
+"use client";
 
-import { Scan, Hexagon, Loader2 } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'motion/react';
-import { useRef, useState } from 'react';
-import dynamic from 'next/dynamic';
+import { motion, useScroll, useTransform } from "motion/react";
+import { useRef } from "react";
+import dynamic from "next/dynamic";
 
-const InteractiveHead = dynamic(() => import('./InteractiveHead').then(mod => mod.InteractiveHead), { ssr: false });
+const InteractiveHead = dynamic(
+  () => import("./InteractiveHead").then((mod) => mod.InteractiveHead),
+  { ssr: false },
+);
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
-  const [isProjectsLoading, setIsProjectsLoading] = useState(false);
-
-  const handleViewProjects = () => {
-    setIsProjectsLoading(true);
-    setTimeout(() => {
-      setIsProjectsLoading(false);
-    }, 2000);
-  };
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"]
+    offset: ["start start", "end start"],
   });
 
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
   return (
-    <section ref={ref} className="min-h-screen flex flex-col justify-center px-6 md:px-12 pt-24 pb-24 relative z-20 bg-[#0a0a0a]">
+    <section
+      ref={ref}
+      id="home"
+      className="min-h-screen flex flex-col justify-center px-6 md:px-12 pt-24 pb-24 relative z-20 bg-[#0a0a0a]"
+    >
       {/* Parallax Background */}
-      <motion.div 
+      <motion.div
         style={{ y: backgroundY }}
         className="absolute inset-0 z-0 pointer-events-none"
       >
@@ -47,57 +45,37 @@ export function Hero() {
         </div>
         <div className="md:col-span-5 mt-12">
           <p className="text-on-surface-variant max-w-sm leading-relaxed text-lg">
-            Crafting cinematic digital experiences at the intersection of high-end design and precision engineering. Focused on WebGL, 3D interaction, and brutalist aesthetics.
+            Building intelligent, real-world digital solutions at the
+            intersection of software engineering and cybersecurity. Focused on
+            AI systems, automation, and full-stack development with a drive for
+            secure and scalable innovation.
           </p>
           <div className="mt-8 flex gap-4">
-            <button 
-              onClick={handleViewProjects}
-              disabled={isProjectsLoading}
+            <button
+              onClick={() =>
+                document
+                  .getElementById("work")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
               className="bg-primary-fixed text-on-primary-fixed px-8 py-4 font-headline font-bold uppercase tracking-widest text-sm hover:brightness-110 transition-all active:scale-95 flex items-center justify-center gap-2 min-w-[180px]"
             >
-              {isProjectsLoading ? (
-                <Loader2 className="animate-spin" size={20} />
-              ) : (
-                "View Projects"
-              )}
+              View Projects
             </button>
-            <button className="border border-outline-variant/30 text-on-surface px-8 py-4 font-headline font-bold uppercase tracking-widest text-sm hover:bg-surface-container-highest transition-all">
+            <a
+              href="https://drive.google.com/file/d/1c6kRGnfD3YpOgH4_JjTTOSm5EdHGgpzn/preview"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-outline-variant/100 text-on-surface px-8 py-4 font-headline font-bold uppercase tracking-widest text-sm hover:bg-surface-container-highest transition-all"
+            >
               Resume
-            </button>
+            </a>
           </div>
         </div>
         <div className="md:col-span-7 flex justify-end relative h-[400px] md:h-[600px]">
-          <div className="w-full h-full bg-surface-container-low/20 backdrop-blur-sm border border-primary-fixed/10 rounded-xl relative group">
-            
+          <div className="w-full h-full bg-surface-container-low/2 backdrop-blur-sm rounded-xl relative group">
             {/* 3D Interactive Model */}
             <InteractiveHead />
 
-            <div className="absolute inset-0 z-20 p-8 flex flex-col justify-between pointer-events-none">
-              <div className="flex justify-between items-start">
-                <div className="font-headline text-[10px] tracking-[0.3em] uppercase text-primary-fixed/50 flex flex-col gap-1">
-                  <span>System: WebGL_Core_v2</span>
-                  <span className="flex items-center gap-2">
-                    <span className="w-1 h-1 rounded-full bg-primary-fixed animate-pulse"></span>
-                    Rendering: Active
-                  </span>
-                </div>
-                <div className="text-primary-fixed/20">
-                  <Scan size={36} />
-                </div>
-              </div>
-              <div className="flex justify-between items-end">
-                <div className="font-headline uppercase">
-                  <div className="text-xs tracking-[0.2em] text-primary-fixed/60 mb-1">Experimental Artifact</div>
-                  <div className="text-2xl font-bold tracking-tighter text-on-surface">Torus_Knot_01</div>
-                </div>
-                <div className="flex items-center gap-4 text-primary-fixed bg-surface-container-highest/80 backdrop-blur-md px-4 py-2 rounded-full border border-primary-fixed/20 shadow-xl">
-                  <Hexagon className="animate-spin-slow" size={24} />
-                  <div className="font-headline uppercase tracking-tighter text-[10px] leading-tight font-bold">
-                    Interactive<br />Model
-                  </div>
-                </div>
-              </div>
-            </div>
             <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] bg-[length:100%_2px,3px_100%] z-30 opacity-30 rounded-xl"></div>
           </div>
         </div>

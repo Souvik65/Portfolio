@@ -21,7 +21,7 @@ function HeadModel() {
     box.getCenter(center);
 
     const maxAxis = Math.max(size.x, size.y, size.z) || 1;
-    const targetSize = 2.6;
+    const targetSize = 3.6;
     const fitScale = targetSize / maxAxis;
 
     cloned.position.sub(center);
@@ -58,7 +58,7 @@ function HeadModel() {
     const targetY = (pointerRef.current.y * Math.PI) / 6;
     
     groupRef.current.rotation.y += (targetX - groupRef.current.rotation.y) * 0.1;
-    groupRef.current.rotation.x += (-targetY - groupRef.current.rotation.x) * 0.1;
+    groupRef.current.rotation.x += (targetY - groupRef.current.rotation.x) * 0.1;
   });
 
   return (
@@ -71,12 +71,16 @@ function HeadModel() {
 export function InteractiveHead() {
   return (
     <div className="w-full h-full absolute inset-0 z-10">
-      <Canvas shadows camera={{ position: [0, 0, 5], fov: 40 }}>
-        <hemisphereLight intensity={0.6} groundColor="#111111" />
-        <directionalLight position={[4, 6, 5]} intensity={1.4} castShadow />
-        <directionalLight position={[-4, 2, -2]} intensity={0.6} />
+      <Canvas shadows
+        gl={{ alpha: true }}
+        style={{ background: 'transparent' }}
+        onCreated={({ gl }) => gl.setClearColor(0x000000, 0)}
+        camera={{ position: [0, 0, 5], fov: 40 }}>
+        <hemisphereLight intensity={5.6} groundColor="#111111" />
+        <directionalLight position={[4, 6, 5]} intensity={2.1} castShadow />
+        <directionalLight position={[-6, 2, -2]} intensity={4.6} />
         <Suspense fallback={null}>
-          <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
+          <Float speed={2} rotationIntensity={0.2} floatIntensity={0.2}>
             <HeadModel />
           </Float>
           <ContactShadows position={[0, -1.75, 0]} opacity={0.35} scale={8} blur={2.2} far={3.2} color="#c8ff00" />

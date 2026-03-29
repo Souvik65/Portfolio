@@ -13,14 +13,14 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'CD/UI — Creative Developer & UI Engineer',
-  description: 'Creative Developer & UI Engineer portfolio',
+  title: 'Souvik\'s Portfolio',
+  description: 'Portfolio showcasing my Software Developer work.',
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} dark`}>
-      <body className="bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden" suppressHydrationWarning>
+      <body className="relative bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden" suppressHydrationWarning>
         <div className="fixed inset-0 z-[100] grain-overlay opacity-5 pointer-events-none mix-blend-overlay"></div>
         {children}
       </body>
