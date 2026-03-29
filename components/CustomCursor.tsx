@@ -5,7 +5,6 @@ import { motion, useSpring } from 'motion/react';
 
 export function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
 
   const followerX = useSpring(0, { stiffness: 150, damping: 20 });
   const followerY = useSpring(0, { stiffness: 150, damping: 20 });
@@ -13,8 +12,6 @@ export function CustomCursor() {
   useEffect(() => {
     // Only show custom cursor on desktop
     if (window.innerWidth <= 768) return;
-    
-    setIsVisible(true);
 
     const moveCursor = (e: MouseEvent) => {
       followerX.set(e.clientX);
@@ -57,12 +54,10 @@ export function CustomCursor() {
     };
   }, [followerX, followerY]);
 
-  if (!isVisible) return null;
-
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 border pointer-events-none z-[10000] rounded-full flex items-center justify-center"
+        className="hidden md:flex fixed top-0 left-0 border pointer-events-none z-[10000] rounded-full items-center justify-center"
         style={{
           x: followerX,
           y: followerY,
