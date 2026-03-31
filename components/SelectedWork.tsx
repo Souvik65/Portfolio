@@ -9,22 +9,24 @@ const projects = [
     tags: 'Next.js — Workflow Automation — Web',
     description: 'Automatrix is a web application that automates workflows for small businesses. It allows users to create custom workflows and automate repetitive tasks. It also includes a dashboard to track workflow performance.',
     link: 'https://automatrixx.vercel.app/',
-    image: `https://image.thum.io/get/width/800/crop/1000/https://automatrixx.vercel.app/`,  },
+    image: '/automatrix.png',
+  },
   {
     id: '02',
     title: 'CloudVault',
     tags: 'Cloud — Storage — Security',
     description: 'CloudVault is a secure cloud storage solution that allows users to store their files securely in the cloud. It also includes a dashboard to track file storage and usage.',
     link: 'https://cloudvaullt.netlify.app/',
-    image: `https://image.thum.io/get/width/800/crop/1000/https://cloudvaullt.netlify.app/`,
+    image: 'https://image.thum.io/get/width/800/crop/1000/https://cloudvaullt.netlify.app/',
   },
   {
     id: '03',
-    title: 'Iventions',
-    tags: 'Frontend Architecture ',
-    description: 'Iventions is a web application that allows users to create custom workflows and automate repetitive tasks. It also includes a dashboard to track workflow performance.',
-    link: 'https://github.com/your-actual-username/iventions',
-    image: `https://image.thum.io/get/width/800/crop/1000/https://github.com/your-actual-username/iventions`,  },
+    title: 'Real-Time DDoS Detection',
+    tags: 'Python-ML — Network Security — Real-Time',
+    description: `This project implements a real-time Distributed Denial of Service (DDoS) detection tool using machine learning techniques. The tool analyzes network traffic in real-time to identify and alert on potential DDoS attacks targeting a specified IP address. The system uses Scapy for packet sniffing and a trained machine learning model (based on features extracted from network flows) to classify traffic as normal or malicious.`,
+    link: 'https://github.com/Souvik65/Real-time-DDoS-Dection-using-ML',
+    // image: '',
+  },
 ];
 
 export function SelectedWork() {
@@ -42,7 +44,8 @@ export function SelectedWork() {
           <div className="text-on-surface-variant font-headline uppercase tracking-widest text-sm mt-8 md:mt-0">
             <button
               onClick={handleExploreMore}
-              className="bg-transparent border-none cursor-pointer text-on-surface-variant font-headline uppercase tracking-widest text-sm hover:text-primary-fixed transition-colors duration-300"
+              className="bg-transparent border-l-15 border-primary-fixed cursor-pointer text-on-surface-variant font-headline uppercase tracking-widest text-md hover:text-primary-fixed font-bold
+              group hover:tracking-[0.3em] transition-all duration-700"
             >
               Tap to Explore More Projects
             </button>
@@ -57,15 +60,20 @@ export function SelectedWork() {
               rel="noopener noreferrer"
               className={`group block relative py-16 border-t ${index === projects.length - 1 ? 'border-b' : ''} border-outline-variant/10 overflow-hidden transition-colors duration-500 hover:bg-surface-container-highest/20 cursor-pointer no-underline text-inherit`}
             >
-              <div className="flex items-center justify-between relative z-10 transition-all duration-500 group-hover:px-4 md:group-hover:px-8">
+              {/* project content container */}
+              <div className="flex flex-col md:flex-row md:items-end justify-between relative z-10 transition-all duration-500 group-hover:px-4 md:group-hover:px-8 gap-4">
                 <div className="flex items-baseline gap-8">
                   <span className="font-headline font-bold text-primary-fixed text-lg transition-transform duration-500 group-hover:-translate-y-2">{project.id}</span>
-                  <h3 className="font-headline font-bold text-5xl md:text-7xl uppercase tracking-tighter transition-all duration-500 group-hover:translate-x-4 group-hover:text-primary-fixed group-hover:scale-105 origin-left group-hover:drop-shadow-[0_0_15px_rgba(200,255,0,0.4)]">
-                    {project.title}
-                  </h3>
-                </div>
-                <div className="hidden md:flex flex-col items-end gap-2 font-headline uppercase tracking-widest text-xs text-on-surface-variant transition-colors duration-500 group-hover:text-primary-fixed">
-                  <span>{project.tags}</span>
+                  <div className="flex flex-col">
+                    <h3 className="font-headline font-bold text-5xl md:text-7xl uppercase tracking-tighter transition-all duration-500 group-hover:translate-x-4 group-hover:text-primary-fixed group-hover:scale-105 origin-left group-hover:drop-shadow-[0_0_15px_rgba(200,255,0,0.4)]">
+                      {project.title}
+                    </h3>
+                    {/* tags - fixed hover color to solid green */}
+                    <div className="flex font-headline uppercase tracking-widest text-[10px] md:text-sm text-on-surface-variant transition-all duration-500 group-hover:text-primary-fixed group-hover:translate-x-4 mt-2 items-center gap-2">
+                      <span className="w-4 h-[1px] bg-on-surface-variant/90 group-hover:bg-primary-fixed transition-colors" />
+                      <span>{project.tags}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -77,12 +85,13 @@ export function SelectedWork() {
               </div>
 
               {/* Website screenshot preview image */}
-              <div className={`absolute ${index % 2 === 0 ? 'right-1/4' : 'right-1/3'} top-1/2 -translate-y-1/2 ${index === 0 ? 'w-64 h-80' : index === 1 ? 'w-80 h-48' : 'w-72 h-72'} opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none scale-50 group-hover:scale-110 z-0 group-hover:shadow-[0_0_40px_rgba(200,255,0,0.2)] rounded-lg overflow-hidden`}>
+              {project.image && (
+              <div className={`absolute ${index % 2 === 0 ? 'right-[10%]' : 'right-[15%]'} top-1/2 -translate-y-1/2 w-[350px] md:w-[400px] aspect-video opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none scale-75 group-hover:scale-110 z-0 group-hover:shadow-[0_0_50px_rgba(200,255,0,0.15)] rounded-xl overflow-hidden border border-white/5 bg-surface-container-highest`}>
                 <Image
                   src={project.image}
                   alt={`${project.title} Preview`}
                   fill
-                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                   referrerPolicy="no-referrer"
                   unoptimized
                   onError={(e) => {
@@ -90,6 +99,7 @@ export function SelectedWork() {
                   }}
                 />                     
               </div>
+              )}
               <div className="absolute inset-0 bg-gradient-to-r from-primary-fixed/0 via-primary-fixed/5 to-primary-fixed/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
             </a>
           ))}

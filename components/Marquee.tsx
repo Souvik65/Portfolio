@@ -15,7 +15,11 @@ const MarqueeItem = () => (
     <Triangle className="text-primary-fixed" size={60} />
     <span className="font-headline font-black text-6xl md:text-8xl uppercase text-stroke">Networking</span>
     <Sparkles className="text-primary-fixed" size={60} />
-    <span className="font-headline font-black text-6xl md:text-8xl uppercase text-on-surface">Web Development</span>
+    <span className="font-headline font-black text-6xl md:text-8xl uppercase text-on-surface">Next.JS</span>
+    <Star className="text-primary-fixed" size={60} />
+    <span className="font-headline font-black text-6xl md:text-8xl uppercase text-stroke">Web Development</span>
+    <Star className="text-primary-fixed" size={60} />
+    <span className="font-headline font-black text-6xl md:text-8xl uppercase text-on-surface">AI/ML</span>
     <Star className="text-primary-fixed" size={60} />
   </div>
 );

@@ -1,6 +1,13 @@
 import Link from "next/link";
+import { FaGithub, FaLinkedin, FaInstagram, FaDribbble } from "react-icons/fa";
 
 export function Contact() {
+  const socials = [
+    { name: "Instagram", url: "https://instagram.com/yourusername", icon: <FaInstagram /> },
+    { name: "LinkedIn", url: "https://linkedin.com/in/yourusername", icon: <FaLinkedin /> },
+    { name: "Dribbble", url: "https://dribbble.com/yourusername", icon: <FaDribbble /> },
+    { name: "GitHub", url: "https://github.com/yourusername", icon: <FaGithub /> },
+  ];
   return (
     <section
       className="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-[#0a0a0a] relative overflow-hidden"
@@ -22,17 +29,19 @@ export function Contact() {
           kivuos.work@gmail.com
         </a>
         <div className="flex gap-8 justify-center pt-12">
-          {["Instagram", "LinkedIn", "Dribbble", "GitHub"].map((social) => (
-            <Link
-              key={social}
-              href="#"
+          {socials.map((social) => (
+            <a
+              key={social.name}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group font-headline text-xs uppercase tracking-widest text-[#e5e2e1] hover:text-primary-fixed hover:tracking-[0.5em] transition-all duration-700"
             >
-              {social}{" "}
+              {social.name}{" "}
               <span className="inline-block translate-y-px transition-transform group-hover:-translate-y-1 group-hover:translate-x-1">
                 ↗
               </span>
-            </Link>
+            </a>
           ))}
         </div>
       </div>

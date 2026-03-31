@@ -2,14 +2,14 @@ import { Code2, Box, Film, PenTool } from 'lucide-react';
 
 export function About() {
   return (
-    <section className="py-25 px-6 md:px-12 bg-surface" id="about">
+    <section className="py-24 px-6 md:px-12 bg-surface" id="about">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-24">
         <div>
           <h2 className="font-headline font-bold text-md text-primary-fixed uppercase tracking-[0.4em] mb-10 flex items-center gap-4">
             <span className="w-12 h-[1px] bg-primary-fixed"></span> About
           </h2>
           <p className="font-headline text-2xl leading-tight font-medium mb-12">
-            I’m an MCA student focused on building practical, real-world digital solutions. I work across full-stack development, AI systems, and automation, creating projects that combine functionality with efficiency.<span className="text-primary-fixed"> From developing face recognition systems to NLP-based applications, I enjoy turning ideas into scalable products.</span> Alongside this,<span className="text-stroke"> I’m exploring cybersecurity and penetration testing, understanding how systems work, break, and can be secured. I’m driven by curiosity, continuous learning,</span> and a goal to build impactful, secure, and well-engineered solutions.
+            I’m an MCA student focused on building practical, real-world digital solutions. I work across full-stack development, AI systems, and automation, creating projects that combine functionality with efficiency.<span className="text-primary-fixed"> From developing face recognition systems to NLP-based applications, I enjoy turning ideas into scalable products. Alongside this, I’m exploring cybersecurity and penetration testing,</span> understanding how systems work, break, and can be secured. I’m driven by curiosity, continuous learning, and a goal to build impactful, secure, and well-engineered solutions.
           </p>
         </div>
         <div className="space-y-12">

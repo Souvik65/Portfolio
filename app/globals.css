@@ -71,7 +71,7 @@
 
 @layer utilities {
   .text-stroke {
-    -webkit-text-stroke: 1px rgba(229, 226, 225, 0.3);
+    -webkit-text-stroke: 1px rgba(250, 248, 247, 0.612);
     color: transparent;
   }
   .grain-overlay {
