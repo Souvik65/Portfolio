@@ -35,17 +35,17 @@ export function SelectedWork() {
   };
 
   return (
-    <section className="py-32 px-6 md:px-12 bg-surface-container-low" id="work">
+    <section className="py-16 md:py-32 px-4 sm:px-6 md:px-12 bg-surface-container-low" id="work">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-24">
-          <h2 className="font-headline font-black text-7xl md:text-9xl uppercase leading-[0.8]">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-24 gap-4">
+          <h2 className="font-headline font-black text-6xl sm:text-6xl md:text-9xl uppercase leading-[0.8]">
             Selected <br /><span className="text-primary-fixed">Projects</span>
           </h2>
-          <div className="text-on-surface-variant font-headline uppercase tracking-widest text-sm mt-8 md:mt-0">
+          <div className="text-on-surface-variant font-headline uppercase tracking-widest text-sm mt-4 md:mt-0">
             <button
               onClick={handleExploreMore}
-              className="bg-transparent border-l-15 border-primary-fixed cursor-pointer text-on-surface-variant font-headline uppercase tracking-widest text-md hover:text-primary-fixed font-bold
-              group hover:tracking-[0.3em] transition-all duration-700"
+              className="bg-transparent border-l-4 border-primary-fixed cursor-pointer text-on-surface-variant font-headline uppercase tracking-widest text-xs md:text-sm hover:text-primary-fixed font-bold
+              group hover:tracking-[0.3em] transition-all duration-700 py-2 pl-3 active:scale-95"
             >
               Tap to Explore More Projects
             </button>
@@ -58,18 +58,18 @@ export function SelectedWork() {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group block relative py-16 border-t ${index === projects.length - 1 ? 'border-b' : ''} border-outline-variant/10 overflow-hidden transition-colors duration-500 hover:bg-surface-container-highest/20 cursor-pointer no-underline text-inherit`}
+              className={`group block relative py-6 sm:py-8 md:py-16 border-t ${index === projects.length - 1 ? 'border-b' : ''} border-outline-variant/10 overflow-hidden transition-colors duration-500 hover:bg-surface-container-highest/20 cursor-pointer no-underline text-inherit`}
             >
               {/* project content container */}
-              <div className="flex flex-col md:flex-row md:items-end justify-between relative z-10 transition-all duration-500 group-hover:px-4 md:group-hover:px-8 gap-4">
-                <div className="flex items-baseline gap-8">
-                  <span className="font-headline font-bold text-primary-fixed text-lg transition-transform duration-500 group-hover:-translate-y-2">{project.id}</span>
+              <div className="flex flex-col md:flex-row md:items-end justify-between relative z-10 transition-all duration-500 group-hover:px-2 md:group-hover:px-8 gap-3 md:gap-4">
+                <div className="flex items-baseline gap-4 md:gap-8">
+                  <span className="font-headline font-bold text-primary-fixed text-base md:text-lg transition-transform duration-500 group-hover:-translate-y-2">{project.id}</span>
                   <div className="flex flex-col">
-                    <h3 className="font-headline font-bold text-5xl md:text-7xl uppercase tracking-tighter transition-all duration-500 group-hover:translate-x-4 group-hover:text-primary-fixed group-hover:scale-105 origin-left group-hover:drop-shadow-[0_0_15px_rgba(200,255,0,0.4)]">
+                    <h3 className="font-headline font-bold text-2xl sm:text-3xl md:text-7xl uppercase tracking-tighter transition-all duration-500 group-hover:translate-x-4 group-hover:text-primary-fixed group-hover:scale-105 origin-left group-hover:drop-shadow-[0_0_15px_rgba(200,255,0,0.4)]">
                       {project.title}
                     </h3>
-                    {/* tags - fixed hover color to solid green */}
-                    <div className="flex font-headline uppercase tracking-widest text-[10px] md:text-sm text-on-surface-variant transition-all duration-500 group-hover:text-primary-fixed group-hover:translate-x-4 mt-2 items-center gap-2">
+                    {/* tags */}
+                    <div className="flex font-headline uppercase tracking-widest text-[10px] md:text-sm text-on-surface-variant transition-all duration-500 group-hover:text-primary-fixed group-hover:translate-x-4 mt-1 md:mt-2 items-center gap-2">
                       <span className="w-4 h-[1px] bg-on-surface-variant/90 group-hover:bg-primary-fixed transition-colors" />
                       <span>{project.tags}</span>
                     </div>
@@ -77,16 +77,16 @@ export function SelectedWork() {
                 </div>
               </div>
 
-              {/* Description - visible on hover */}
-              <div className="relative z-10 max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 transition-all duration-500 ease-in-out overflow-hidden px-4 md:px-8">
-                <p className="mt-4 text-sm md:text-base text-on-surface-variant/80 font-body max-w-2xl leading-relaxed">
+              {/* Description - always visible on mobile, hover on desktop */}
+              <div className="relative z-10 max-h-32 opacity-100 md:max-h-0 md:opacity-0 md:group-hover:max-h-40 md:group-hover:opacity-100 transition-all duration-500 ease-in-out overflow-hidden px-0 md:px-8">
+                <p className="mt-2 md:mt-4 text-xs sm:text-sm md:text-base text-on-surface-variant/80 font-body max-w-2xl leading-relaxed">
                   {project.description}
                 </p>
               </div>
 
-              {/* Website screenshot preview image */}
+              {/* Website screenshot preview image — hidden on mobile */}
               {project.image && (
-              <div className={`absolute ${index % 2 === 0 ? 'right-[10%]' : 'right-[15%]'} top-1/2 -translate-y-1/2 w-[350px] md:w-[400px] aspect-video opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none scale-75 group-hover:scale-110 z-0 group-hover:shadow-[0_0_50px_rgba(200,255,0,0.15)] rounded-xl overflow-hidden border border-white/5 bg-surface-container-highest`}>
+              <div className={`hidden md:block absolute ${index % 2 === 0 ? 'right-[10%]' : 'right-[15%]'} top-1/2 -translate-y-1/2 w-[350px] md:w-[400px] aspect-video opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none scale-75 group-hover:scale-110 z-0 group-hover:shadow-[0_0_50px_rgba(200,255,0,0.15)] rounded-xl overflow-hidden border border-white/5 bg-surface-container-highest`}>
                 <Image
                   src={project.image}
                   alt={`${project.title} Preview`}
@@ -108,4 +108,3 @@ export function SelectedWork() {
     </section>
   );
 }
-

@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 
 const InteractiveHead = dynamic(
@@ -9,8 +10,22 @@ const InteractiveHead = dynamic(
   { ssr: false },
 );
 
+function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < breakpoint);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, [breakpoint]);
+
+  return isMobile;
+}
+
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
+  const isMobile = useIsMobile();
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -23,7 +38,7 @@ export function Hero() {
     <section
       ref={ref}
       id="home"
-      className="min-h-screen flex flex-col justify-center px-6 md:px-12 pt-24 pb-24 relative z-20 bg-[#0a0a0a]"
+      className="min-h-[100svh] flex flex-col justify-center px-4 sm:px-6 md:px-12 pt-20 md:pt-24 pb-0 sm:pb-8 md:pb-24 relative z-20 bg-[#0a0a0a] overflow-hidden"
     >
       {/* Parallax Background */}
       <motion.div
@@ -35,29 +50,30 @@ export function Hero() {
         <div className="absolute top-[40%] left-[60%] w-[30%] h-[30%] rounded-full bg-white/5 blur-[100px]" />
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center relative z-10">
         <div className="md:col-span-12">
-          <h1 className="font-headline font-black text-[clamp(3rem,10vw,12rem)] leading-[0.85] tracking-tighter uppercase">
+          <h1 className="font-headline font-black text-[clamp(3.7rem,9vw,12rem)] leading-[0.85] tracking-tighter uppercase">
             Software <br />
             <span className="text-primary-fixed">Developer</span> <br />
-            <span className="text-stroke">&amp; UI Engineer</span>
+            <span className="text-stroke">& UI Engineer</span>
           </h1>
         </div>
-        <div className="md:col-span-5 mt-12">
-          <p className="text-on-surface-variant max-w-sm leading-relaxed text-lg">
+
+        <div className="md:col-span-5 mt-4 md:mt-12">
+          <p className="text-on-surface-variant max-w-sm leading-relaxed text-sm sm:text-base md:text-lg">
             Building intelligent, real-world digital solutions at the
             intersection of software engineering and cybersecurity. Focused on
             AI systems, automation, and full-stack development with a drive for
             secure and scalable innovation.
           </p>
-          <div className="mt-8 flex gap-4">
+          <div className="mt-5 md:mt-8 flex flex-row gap-3 sm:gap-4">
             <button
               onClick={() =>
                 document
                   .getElementById("work")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="bg-primary-fixed text-on-primary-fixed px-8 py-4 font-headline font-bold uppercase tracking-widest text-sm hover:brightness-110 transition-all active:scale-95 flex items-center justify-center gap-2 min-w-[180px]"
+              className="bg-primary-fixed text-on-primary-fixed px-5 sm:px-8 py-3 sm:py-4 font-headline font-bold uppercase tracking-widest text-xs sm:text-sm hover:brightness-110 transition-all active:scale-95 flex items-center justify-center gap-2 w-auto min-w-0 sm:min-w-[180px]"
             >
               View Projects
             </button>
@@ -65,19 +81,41 @@ export function Hero() {
               href="https://drive.google.com/file/d/1c6kRGnfD3YpOgH4_JjTTOSm5EdHGgpzn/preview"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-outline-variant/100 text-on-surface px-8 py-4 font-headline font-bold uppercase tracking-widest text-sm hover:bg-surface-container-highest transition-all"
+              className="border border-outline-variant/100 text-on-surface px-5 sm:px-8 py-3 sm:py-4 font-headline font-bold uppercase tracking-widest text-xs sm:text-sm hover:bg-surface-container-highest transition-all text-center w-auto"
             >
               Resume
             </a>
           </div>
         </div>
-        <div className="md:col-span-7 flex justify-end relative h-[400px] md:h-[600px]">
-          <div className="w-full h-full bg-surface-container-low/2 backdrop-blur-sm rounded-xl relative group">
-            {/* 3D Interactive Model */}
-            <InteractiveHead />
 
-            <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] bg-[length:100%_2px,3px_100%] z-30 opacity-30 rounded-xl"></div>
-          </div>
+        {/* 3D model on desktop, static image on mobile */}
+        <div className="md:col-span-7 flex justify-center md:justify-end relative h-[400px] sm:h-[480px] md:h-[600px]">
+          {isMobile ? (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="relative w-full h-full flex items-end justify-center"
+            >
+              {/* Glow effect behind image */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-[100%] h-[100%] rounded-full bg-primary-fixed/5 blur-[100px]" />
+              </div>
+              <Image
+                src="/souvik-hero.png"
+                alt="Souvik Debnath"
+                width={800}
+                height={900}
+                className="relative z-10 object-contain object-bottom w-[125%] h-[111%] max-h-none drop-shadow-[0_0_30px_rgba(200,255,0,0.15)]"
+                priority
+              />
+            </motion.div>
+          ) : (
+            <div className="w-full h-full bg-surface-container-low/2 backdrop-blur-sm rounded-xl relative group">
+              <InteractiveHead />
+              <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] bg-[length:100%_2px,3px_100%] z-30 opacity-30 rounded-xl"></div>
+            </div>
+          )}
         </div>
       </div>
     </section>
