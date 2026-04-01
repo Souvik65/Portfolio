@@ -2,10 +2,10 @@ import { FaGithub, FaLinkedin, FaInstagram, FaDribbble } from "react-icons/fa";
 
 export function Contact() {
   const socials = [
-    { name: "Instagram", url: "https://instagram.com/yourusername", icon: <FaInstagram /> },
-    { name: "LinkedIn", url: "https://linkedin.com/in/yourusername", icon: <FaLinkedin /> },
+    { name: "Instagram", url: "https://www.instagram.com/1.m_sk/", icon: <FaInstagram /> },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/kivuos/", icon: <FaLinkedin /> },
     // { name: "Dribbble", url: "https://dribbble.com/yourusername", icon: <FaDribbble /> },
-    { name: "GitHub", url: "https://github.com/yourusername", icon: <FaGithub /> },
+    { name: "GitHub", url: "https://github.com/Souvik65", icon: <FaGithub /> },
   ];
   return (
     <section

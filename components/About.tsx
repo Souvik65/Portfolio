@@ -17,7 +17,7 @@ export function About() {
             <div className="p-4 sm:p-5 md:p-8 bg-surface-container-low border-b-2 border-transparent hover:border-primary-fixed transition-all group cursor-crosshair rounded-lg sm:rounded-none">
               <Code2 className="text-primary-fixed mb-2 md:mb-4" size={24} />
               <div className="font-headline font-bold uppercase tracking-tighter text-base sm:text-lg md:text-xl">Front-End</div>
-              <p className="text-[11px] sm:text-xs md:text-sm text-on-surface-variant mt-1.5 md:opacity-0 md:group-hover:opacity-100 transition-opacity leading-snug">Profecient component architect.</p>
+              <p className="text-[11px] sm:text-xs md:text-sm text-on-surface-variant mt-1.5 md:opacity-0 md:group-hover:opacity-100 transition-opacity leading-snug">Proficient component architect.</p>
             </div>
             <div className="p-4 sm:p-5 md:p-8 bg-surface-container-low border-b-2 border-transparent hover:border-primary-fixed transition-all group cursor-crosshair rounded-lg sm:rounded-none">
               <Box className="text-primary-fixed mb-2 md:mb-4" size={24} />
