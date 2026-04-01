@@ -85,13 +85,10 @@ export function Projects() {
     const rect = container.getBoundingClientRect();
     const viewportH = window.innerHeight;
 
-    // How far the viewport center has traveled through the container (0-1)
     const progress = Math.min(Math.max((viewportH * 0.6 - rect.top) / rect.height, 0), 1);
 
-    // Scale the line from 0% to 100% height
     glow.style.transform = `scaleY(${progress})`;
 
-    // Light up dots that the progress line has reached
     const filledHeight = progress * rect.height;
     dotRefs.current.forEach((dot) => {
       if (!dot) return;
@@ -108,7 +105,6 @@ export function Projects() {
   useEffect(() => {
     if (!visible) return;
     window.addEventListener('scroll', updateGlow, { passive: true });
-    // Initial position
     requestAnimationFrame(updateGlow);
     return () => window.removeEventListener('scroll', updateGlow);
   }, [visible, updateGlow]);
@@ -116,7 +112,6 @@ export function Projects() {
   useEffect(() => {
     const show = () => {
       setVisible(true);
-      // Use double rAF to ensure DOM update is complete
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -138,21 +133,21 @@ export function Projects() {
       style={{ animation: 'projects-reveal 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards' }}
     >
       {/* Header */}
-      <header className="pt-32 pb-24 px-8 md:px-12 lg:px-24 text-center md:text-left">
-        <div className="text-md font-bold uppercase tracking-[0.4em] text-primary-fixed mb-6 flex items-center justify-center md:justify-start gap-4">
-          <span className="w-12 h-[1px] bg-primary-fixed" />
+      <header className="pt-16 md:pt-32 pb-12 md:pb-24 px-4 sm:px-8 md:px-12 lg:px-24 text-center md:text-left">
+        <div className="text-sm md:text-md font-bold uppercase tracking-[0.4em] text-primary-fixed mb-4 md:mb-6 flex items-center justify-center md:justify-start gap-4">
+          <span className="w-8 md:w-12 h-[1px] bg-primary-fixed" />
           PROJECTS ARCHIVE
         </div>
-        <h2 className="font-headline font-black uppercase leading-[0.85] tracking-tighter text-[clamp(4rem,12vw,10rem)] mb-12">
-          COLLECTED<br />
-          <span className="text-stroke">WORKS</span>
+        <h2 className="font-headline font-black uppercase leading-[0.85] tracking-tighter text-[clamp(3.75rem,12vw,10rem)] mb-6 md:mb-12">
+          OTHER<br />
+          <span className="text-stroke">PROJECTS</span>
         </h2>
-        <div className="flex flex-col md:flex-row justify-between items-end gap-8">
-          <p className="max-w-xl text-on-surface opacity-60 text-lg md:text-xl leading-relaxed font-light text-left">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 md:gap-8">
+          <p className="max-w-xl text-on-surface opacity-60 text-base md:text-xl leading-relaxed font-light text-left">
             A comprehensive technical index of immersive environments, creative engineering
             protocols, and digital artifacts developed between 2020—2024.
           </p>
-          <div className="text-[10px] font-medium uppercase tracking-[0.3em] text-on-surface opacity-40 text-right">
+          <div className="text-[10px] font-medium uppercase tracking-[0.3em] text-on-surface opacity-40 text-left md:text-right">
             TOTAL ENTRIES: {String(ARCHIVE_PROJECTS.length).padStart(2, '0')}
             <br />
             STATUS: OPTIMIZED
@@ -161,20 +156,20 @@ export function Projects() {
       </header>
 
       {/* Timeline */}
-      <div ref={timelineContainerRef} className="relative px-8 md:px-12 lg:px-24 min-h-screen pb-32">
+      <div ref={timelineContainerRef} className="relative px-4 sm:px-8 md:px-12 lg:px-24 min-h-screen pb-16 md:pb-32">
         {/* Central axis line — static track */}
-        <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[1px] -translate-x-1/2 bg-white/[0.06]" />
+        <div className="absolute left-6 sm:left-8 md:left-1/2 top-0 bottom-0 w-[1px] -translate-x-1/2 bg-white/[0.06]" />
 
         {/* Scroll-tracking progress line */}
         <div
           ref={glowRef}
-          className="absolute left-8 md:left-1/2 top-0 bottom-0 w-[3px] -translate-x-1/2 pointer-events-none z-10 origin-top"
+          className="absolute left-6 sm:left-8 md:left-1/2 top-0 bottom-0 w-[3px] -translate-x-1/2 pointer-events-none z-10 origin-top"
           style={{ transform: 'scaleY(0)' }}
         >
           <div className="w-full h-full bg-primary-fixed shadow-[0_0_8px_rgba(200,255,0,0.5),0_0_20px_rgba(200,255,0,0.2)]" />
         </div>
 
-        <div className="flex flex-col gap-24 relative">
+        <div className="flex flex-col gap-16 md:gap-24 relative">
           {ARCHIVE_PROJECTS.map((project, index) => {
             const isLeft = project.side === 'left';
             return (
@@ -182,7 +177,7 @@ export function Projects() {
                 key={index}
                 className={`group relative flex flex-col ${
                   isLeft ? 'md:flex-row' : 'md:flex-row-reverse'
-                } items-center justify-center min-h-[160px]`}
+                } items-start md:items-center justify-center min-h-[120px] md:min-h-[160px]`}
                 style={{
                   opacity: 0,
                   animation: `timeline-entry-in 0.6s ${0.15 * index}s cubic-bezier(0.23, 1, 0.32, 1) forwards`,
@@ -191,10 +186,10 @@ export function Projects() {
                 {/* Timeline dot */}
                 <div
                   ref={(el) => { dotRefs.current[index] = el; }}
-                  className="absolute left-4 md:left-1/2 top-0 md:top-1/2 -translate-x-1/2 w-[9px] h-[9px] bg-primary-fixed rounded-full z-10 opacity-0 scale-0 transition-all duration-500"
+                  className="absolute left-[14px] sm:left-[22px] md:left-1/2 top-0 md:top-1/2 -translate-x-1/2 w-[9px] h-[9px] bg-primary-fixed rounded-full z-10 opacity-0 scale-0 transition-all duration-500"
                 />
 
-                {/* Image / year side */}
+                {/* Image / year side — desktop only */}
                 <div
                   className={`hidden md:block w-1/2 ${
                     isLeft ? 'pr-20 text-right' : 'pl-20 text-left'
@@ -203,7 +198,6 @@ export function Projects() {
                   <span className="font-headline text-[10px] tracking-[0.5em] text-primary-fixed block mb-2">
                     {project.year}
                   </span>
-                  {/* Reveal image on hover */}
                   <div
                     className={`absolute ${
                       isLeft ? 'right-1/2 mr-24' : 'left-1/2 ml-24'
@@ -219,19 +213,24 @@ export function Projects() {
                   </div>
                 </div>
 
+                {/* Mobile year label */}
+                <span className="md:hidden font-headline text-[10px] tracking-[0.5em] text-primary-fixed block mb-2 ml-10 sm:ml-12">
+                  {project.year}
+                </span>
+
                 {/* Text side */}
                 <div
-                  className={`w-full md:w-1/2 pl-12 md:pl-0 ${
+                  className={`w-full md:w-1/2 pl-10 sm:pl-12 md:pl-0 ${
                     isLeft
                       ? 'md:pl-20'
                       : 'md:pr-20 text-left md:text-right'
                   }`}
                 >
-                  <h3 className="font-headline font-black text-4xl md:text-6xl lg:text-7xl tracking-tighter uppercase transition-colors duration-300 group-hover:text-primary-fixed mb-4">
+                  <h3 className="font-headline font-black text-2xl sm:text-4xl md:text-6xl lg:text-7xl tracking-tighter uppercase transition-colors duration-300 group-hover:text-primary-fixed mb-2 md:mb-4">
                     {project.title}
                   </h3>
                   <div
-                    className={`flex flex-wrap gap-8 ${
+                    className={`flex flex-wrap gap-4 md:gap-8 ${
                       !isLeft ? 'md:justify-end' : ''
                     }`}
                   >
@@ -260,14 +259,14 @@ export function Projects() {
       </div>
 
       {/* Close / collapse button */}
-      <div className="flex justify-center pb-24">
+      <div className="flex justify-center pb-12 md:pb-24 px-4">
         <button
           type="button"
           onClick={() => setVisible(false)}
-          className="group relative overflow-hidden bg-transparent border border-outline-variant px-12 py-6 transition-all hover:border-primary-fixed cursor-pointer"
+          className="group relative overflow-hidden bg-transparent border border-outline-variant px-8 md:px-12 py-4 md:py-6 transition-all hover:border-primary-fixed cursor-pointer w-full sm:w-auto"
         >
           <div className="absolute inset-0 bg-primary-fixed translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-          <span className="relative z-10 font-label text-[12px] font-black tracking-[0.5em] text-on-surface group-hover:text-black transition-colors uppercase">
+          <span className="relative z-10 font-label text-[11px] md:text-[12px] font-black tracking-[0.5em] text-on-surface group-hover:text-black transition-colors uppercase">
             COLLAPSE PROJECTS
           </span>
         </button>
