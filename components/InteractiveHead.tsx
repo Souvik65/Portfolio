@@ -2,15 +2,15 @@
 
 import { Suspense, useEffect, useMemo, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, ContactShadows, useGLTF } from '@react-three/drei';
+import { ContactShadows, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
 function HeadModel() {
   const groupRef = useRef<THREE.Group>(null);
   const pointerRef = useRef({ x: 0, y: 0 });
-  
-  // Load model and clone it so transforms don't mutate shared GLTF cache.
+
   const { scene } = useGLTF('/skd.glb');
+
   const fittedScene = useMemo(() => {
     const cloned = scene.clone(true);
 
@@ -26,10 +26,15 @@ function HeadModel() {
 
     cloned.position.sub(center);
     cloned.scale.setScalar(fitScale);
+
     cloned.traverse((child) => {
       if ((child as THREE.Mesh).isMesh) {
-        child.castShadow = true;
-        child.receiveShadow = true;
+        // 🔥 Disable heavy shadow calculations
+        child.castShadow = false;
+        child.receiveShadow = false;
+
+        // Minor optimization
+        child.frustumCulled = true;
       }
     });
 
@@ -52,13 +57,14 @@ function HeadModel() {
 
   useFrame(() => {
     if (!groupRef.current) return;
-    
-    // Track pointer even when it is outside the canvas bounds.
+
     const targetX = (pointerRef.current.x * Math.PI) / 5;
     const targetY = (pointerRef.current.y * Math.PI) / 6;
-    
-    groupRef.current.rotation.y += (targetX - groupRef.current.rotation.y) * 0.1;
-    groupRef.current.rotation.x += (targetY - groupRef.current.rotation.x) * 0.1;
+
+    const damping = 0.05; // 🔥 smoother + lighter
+
+    groupRef.current.rotation.y += (targetX - groupRef.current.rotation.y) * damping;
+    groupRef.current.rotation.x += (targetY - groupRef.current.rotation.x) * damping;
   });
 
   return (
@@ -71,19 +77,37 @@ function HeadModel() {
 export function InteractiveHead() {
   return (
     <div className="w-full h-full absolute inset-0 z-10">
-      <Canvas shadows
+      <Canvas
+        dpr={[1, 1.5]} // 🔥 huge performance boost
         gl={{ alpha: true }}
         style={{ background: 'transparent' }}
         onCreated={({ gl }) => gl.setClearColor(0x000000, 0)}
-        camera={{ position: [0, 0, 5], fov: 40 }}>
-        <hemisphereLight intensity={5.6} groundColor="#111111" />
-        <directionalLight position={[4, 6, 5]} intensity={2.1} castShadow />
-        <directionalLight position={[-6, 2, -2]} intensity={4.6} />
+        camera={{ position: [0, 0, 5], fov: 40 }}
+      >
+        {/* 🔥 simpler lighting (no shadows) */}
+        <ambientLight intensity={0.8} />
+
+        {/* 🔥 MAIN FRONT LIGHT */}
+        <directionalLight position={[0, 0, 5]} intensity={2.2} />
+
+        {/* SIDE FILL LIGHT */}
+        <directionalLight position={[4, 2, 2]} intensity={1} />
+
+        {/* BACK LIGHT (for glow/edge) */}
+        <directionalLight position={[0, 5, -5]} intensity={0.8} />
+
         <Suspense fallback={null}>
-          <Float speed={2} rotationIntensity={0.2} floatIntensity={0.2}>
-            <HeadModel />
-          </Float>
-          <ContactShadows position={[0, -1.75, 0]} opacity={0.35} scale={8} blur={2.2} far={3.2} color="#c8ff00" />
+          <HeadModel />
+
+          {/* 🔥 optimized contact shadow */}
+          <ContactShadows
+            position={[0, -1.75, 0]}
+            opacity={0.25}
+            scale={6}
+            blur={1}
+            far={2}
+            color="#c8ff00"
+          />
         </Suspense>
       </Canvas>
     </div>

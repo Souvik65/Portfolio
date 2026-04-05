@@ -8,7 +8,7 @@ const NAV_ITEMS = [
   { label: 'About', sectionId: 'about' },
   { label: 'Work', sectionId: 'work' },
   { label: 'Skills', sectionId: 'skill' },
-  { label: 'Projects', sectionId: 'projects' },
+  // { label: 'Projects', sectionId: 'projects' },
   { label: 'Contact', sectionId: 'contact' },
 ];
 

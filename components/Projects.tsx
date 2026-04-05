@@ -5,7 +5,7 @@ import NextImage from 'next/image';
 
  
 interface Project { 
-  year: string; 
+ 
   title: string; 
   category: string; 
   stack: string; 
@@ -15,8 +15,7 @@ interface Project {
  const ARCHIVE_PROJECTS: Project[] = [
 
   {
-    year: '2026',
-    title: 'Project 1',
+    title: 'Real-Time Bus Tracking App',
     category: 'tech',
     stack: 'React / Next.js',
     image:
@@ -24,7 +23,6 @@ interface Project {
     side: 'left',
   },
   {
-    year: '2026',
     title: 'Project 2',
     category: 'tech',
     stack: 'React / Next.js',
@@ -33,7 +31,6 @@ interface Project {
     side: 'right',
   },
   {
-    year: '2026',
     title: 'Project 3',
     category: 'tech',
     stack: 'React / Next.js',
@@ -42,7 +39,6 @@ interface Project {
     side: 'left',
   },
   {
-    year: '2026',
     title: 'Project 4',
     category: 'tech',
     stack: 'React / Next.js',
@@ -51,7 +47,6 @@ interface Project {
     side: 'right',
   },
   {
-    year: '2026',
     title: 'Project 5',
     category: 'tech',
     stack: 'React / Next.js',
@@ -60,7 +55,6 @@ interface Project {
     side: 'left',
   },
   {
-    year: '2026',
     title: 'Project 6',
     category: 'tech',
     stack: 'React / Next.js',
@@ -144,8 +138,8 @@ export function Projects() {
         </h2>
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 md:gap-8">
           <p className="max-w-xl text-on-surface opacity-60 text-base md:text-xl leading-relaxed font-light text-left">
-            A comprehensive technical index of immersive environments, creative engineering
-            protocols, and digital artifacts developed between 2020—2024.
+            A curated collection of additional projects showcasing my journey in development, cybersecurity, and problem-solving.
+            Each project reflects hands-on learning, experimentation, and continuous improvement.
           </p>
           <div className="text-[10px] font-medium uppercase tracking-[0.3em] text-on-surface opacity-40 text-left md:text-right">
             TOTAL ENTRIES: {String(ARCHIVE_PROJECTS.length).padStart(2, '0')}
@@ -195,9 +189,6 @@ export function Projects() {
                     isLeft ? 'pr-20 text-right' : 'pl-20 text-left'
                   }`}
                 >
-                  <span className="font-headline text-[10px] tracking-[0.5em] text-primary-fixed block mb-2">
-                    {project.year}
-                  </span>
                   <div
                     className={`absolute ${
                       isLeft ? 'right-1/2 mr-24' : 'left-1/2 ml-24'
@@ -212,11 +203,6 @@ export function Projects() {
                     />
                   </div>
                 </div>
-
-                {/* Mobile year label */}
-                <span className="md:hidden font-headline text-[10px] tracking-[0.5em] text-primary-fixed block mb-2 ml-10 sm:ml-12">
-                  {project.year}
-                </span>
 
                 {/* Text side */}
                 <div

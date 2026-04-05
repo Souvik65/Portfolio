@@ -3,11 +3,8 @@ export function Footer() {
     <footer className="relative w-full overflow-hidden bg-[#131313] flex flex-col justify-end p-5 sm:p-8 md:p-16">
       <div className="mb-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
         <div className="col-span-full">
-          <div className="text-[#e5e2e1] font-headline font-bold text-2xl md:text-3xl mb-4">
-            Souvik
-          </div>
           <p className="text-on-surface-variant max-w-xs uppercase text-xs tracking-widest leading-loose">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid ut sapiente sunt exercitationem dignissimos debitis sint tenetur dolore id fugit.
+            Building secure and scalable digital solutions with a focus on ethical hacking and real-world problem solving.
           </p>
           <div className="mt-8 md:mt-24 pointer-events-none select-none">
             <h2 className="font-headline text-[clamp(2rem,12vw,10rem)] leading-[0.8] font-black uppercase text-[#e5e2e1] opacity-10">

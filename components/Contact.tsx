@@ -23,9 +23,9 @@ export function Contact() {
         </h2>
         <a
           className="block font-headline font-bold text-base sm:text-2xl md:text-5xl uppercase tracking-tighter hover:text-primary-fixed transition-colors break-words"
-          href="mailto:kivuos.work@gmail.com"
+          href="mailto:souvikdn.work@gmail.com"
         >
-          kivuos.work@gmail.com
+          souvikdn.work@gmail.com
         </a>
         <div className="grid grid-cols-2 sm:flex gap-4 sm:gap-8 justify-center pt-6 md:pt-12">
           {socials.map((social) => (

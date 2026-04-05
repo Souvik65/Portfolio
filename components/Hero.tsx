@@ -106,7 +106,7 @@ export function Hero() {
                 alt="Souvik Debnath"
                 width={800}
                 height={900}
-                className="relative z-10 object-contain object-bottom w-[125%] h-[111%] max-h-none drop-shadow-[0_0_30px_rgba(200,255,0,0.15)]"
+                className="relative z-10 object-contain object-bottom w-[125%] h-[111%] max-h-none drop-shadow-[0_0_30px_rgba(200,255,0,0.15)] pointer-events-none"
                 priority
               />
             </motion.div>

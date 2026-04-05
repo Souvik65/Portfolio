@@ -10,14 +10,16 @@ const projects = [
     description: 'Automatrix is a web application that automates workflows for small businesses. It allows users to create custom workflows and automate repetitive tasks. It also includes a dashboard to track workflow performance.',
     link: 'https://automatrixx.vercel.app/',
     image: '/automatrix.png',
+    isLive: true,
   },
   {
     id: '02',
-    title: 'CloudVault',
+    title: 'StorageVault',
     tags: 'Cloud — Storage — Security',
-    description: 'CloudVault is a secure cloud storage solution that allows users to store their files securely in the cloud. It also includes a dashboard to track file storage and usage.',
-    link: 'https://cloudvaullt.netlify.app/',
-    image: 'https://image.thum.io/get/width/800/crop/1000/https://cloudvaullt.netlify.app/',
+    description: 'StorageVault is a secure cloud storage solution that allows users to store their files securely in the cloud. It also includes a dashboard to track file storage and usage.',
+    link: 'https://storagevaultt.vercel.app/',
+    image: 'https://image.thum.io/get/width/800/crop/1000/https://storagevaultt.vercel.app/',
+    isLive: true,
   },
   {
     id: '03',
@@ -26,6 +28,7 @@ const projects = [
     description: `This project implements a real-time Distributed Denial of Service (DDoS) detection tool using machine learning techniques. The tool analyzes network traffic in real-time to identify and alert on potential DDoS attacks targeting a specified IP address. The system uses Scapy for packet sniffing and a trained machine learning model (based on features extracted from network flows) to classify traffic as normal or malicious.`,
     link: 'https://github.com/Souvik65/Real-time-DDoS-Dection-using-ML',
     // image: '',
+    isLive: false,
   },
 ];
 
@@ -47,7 +50,7 @@ export function SelectedWork() {
               className="bg-transparent border-l-4 border-primary-fixed cursor-pointer text-on-surface-variant font-headline uppercase tracking-widest text-xs md:text-sm hover:text-primary-fixed font-bold
               group hover:tracking-[0.3em] transition-all duration-700 py-2 pl-3 active:scale-95"
             >
-              Tap to Explore More Projects
+              {/* Tap to Explore More Projects */}
             </button>
           </div>
         </div>
@@ -60,7 +63,21 @@ export function SelectedWork() {
               rel="noopener noreferrer"
               className={`group block relative py-6 sm:py-8 md:py-16 border-t ${index === projects.length - 1 ? 'border-b' : ''} border-outline-variant/10 overflow-hidden transition-colors duration-500 hover:bg-surface-container-highest/20 cursor-pointer no-underline text-inherit`}
             >
-              {/* project content container */}
+              {project.isLive && (
+                <div className="absolute top-4 right-4 md:top-6 md:left-8 md:right-auto z-20">
+                  <div className="flex items-center gap-2 px-3 py-1 rounded-full 
+                    bg-black/40 backdrop-blur-md border border-primary-fixed/30 
+                    shadow-[0_0_12px_rgba(200,255,0,0.2)]">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-fixed opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-fixed shadow-[0_0_8px_rgba(200,255,0,0.8)]"></span>
+                    </span>
+                    <span className="text-[10px] md:text-xs font-headline font-bold text-primary-fixed uppercase tracking-[0.2em]">
+                      Live
+                    </span>
+                  </div>
+                </div>
+              )}              {/* project content container */}
               <div className="flex flex-col md:flex-row md:items-end justify-between relative z-10 transition-all duration-500 group-hover:px-2 md:group-hover:px-8 gap-3 md:gap-4">
                 <div className="flex items-baseline gap-4 md:gap-8">
                   <span className="font-headline font-bold text-primary-fixed text-base md:text-lg transition-transform duration-500 group-hover:-translate-y-2">{project.id}</span>
