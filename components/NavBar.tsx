@@ -8,7 +8,7 @@ const NAV_ITEMS = [
   { label: 'About', sectionId: 'about' },
   { label: 'Work', sectionId: 'work' },
   { label: 'Skills', sectionId: 'skill' },
-  // { label: 'Projects', sectionId: 'projects' },
+  { label: 'Projects', sectionId: 'projects' },
   { label: 'Contact', sectionId: 'contact' },
 ];
 
@@ -141,7 +141,7 @@ export function NavBar() {
                   className={`font-headline text-xs uppercase cursor-pointer bg-transparent border-none transition-all duration-700 ease-out active:scale-90 ${
                     isActive
                       ? 'text-primary-fixed font-bold tracking-[0.3em]'
-                      : 'text-[#e5e2e1]/70 tracking-widest hover:text-primary-fixed hover:tracking-[0.8em]'
+                      : 'text-[#e5e2e1] tracking-widest hover:text-primary-fixed hover:tracking-[0.8em]'
                   }`}
                 >
                   {item.label}

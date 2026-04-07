@@ -9,7 +9,7 @@ const projects = [
     tags: 'Next.js — Workflow Automation — Web',
     description: 'Automatrix is a web application that automates workflows for small businesses. It allows users to create custom workflows and automate repetitive tasks. It also includes a dashboard to track workflow performance.',
     link: 'https://automatrixx.vercel.app/',
-    image: '/automatrix.png',
+    image: '/automatrix.webp',
     isLive: true,
   },
   {
@@ -47,10 +47,9 @@ export function SelectedWork() {
           <div className="text-on-surface-variant font-headline uppercase tracking-widest text-sm mt-4 md:mt-0">
             <button
               onClick={handleExploreMore}
-              className="bg-transparent border-l-4 border-primary-fixed cursor-pointer text-on-surface-variant font-headline uppercase tracking-widest text-xs md:text-sm hover:text-primary-fixed font-bold
-              group hover:tracking-[0.3em] transition-all duration-700 py-2 pl-3 active:scale-95"
+              className="text-[10px] border-l-4 border-primary-fixed sm:text-xs uppercase sm:tracking-[0.2em] active:text-primary-fixed px-4 sm:px-5 justify-center gap-2.5 min-h-[48px] min-w-[48px] rounded-lg hover:bg-white/[0.1] active:bg-white/[0.06] font-headline text-xs tracking-widest text-[#e5e2e1] hover:text-primary-fixed hover:tracking-[0.3em] transition-all duration-700 py-3 flex items-center active:scale-95"
             >
-              {/* Tap to Explore More Projects */}
+              Tap to Explore More Projects
             </button>
           </div>
         </div>

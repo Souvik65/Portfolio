@@ -5,62 +5,52 @@ import NextImage from 'next/image';
 
  
 interface Project { 
- 
+
   title: string; 
   category: string; 
   stack: string; 
   image: string; 
   side: 'left' | 'right'; 
+  isLive: boolean;
+  link?: string;
+  
 } 
  const ARCHIVE_PROJECTS: Project[] = [
 
   {
     title: 'Real-Time Bus Tracking App',
-    category: 'tech',
-    stack: 'React / Next.js',
-    image:
-      '/asdf.jpg',
+    category: 'Real-time location tracking',
+    stack: 'Node.js / Express / Socket.IO / EJS / Leaflet',
+    image: '/bus-track.webp',
     side: 'left',
+    isLive: false,
+    
   },
   {
-    title: 'Project 2',
-    category: 'tech',
-    stack: 'React / Next.js',
-    image:
-      '/asdf.jpg',
+    title: 'E-Commerce website',
+    category: 'E-Commerce/Freelance project',
+    stack: 'React / TypeScript / Vite / CSS',
+    image: '/blushycheeks.webp',
     side: 'right',
+    isLive: true,
+    link: 'https://blushy-cheeks.vercel.app/',
   },
   {
-    title: 'Project 3',
-    category: 'tech',
-    stack: 'React / Next.js',
-    image:
-      '/asdf.jpg',
+    title: 'Photography Portfolio',
+    category: 'Photography',    stack: 'React / Next.js / TypeScript / Tailwind CSS / PostgreSQL',
+    image: '/photo-portfolio.webp',
     side: 'left',
+    isLive: true,
+    link: 'https://lenslightportfolio.vercel.app',
   },
   {
-    title: 'Project 4',
-    category: 'tech',
+    title: 'E-Book store',
+    category: 'E-Commerce',
     stack: 'React / Next.js',
-    image:
-      '/asdf.jpg',
+    image: '/ebookdrive.webp',
     side: 'right',
-  },
-  {
-    title: 'Project 5',
-    category: 'tech',
-    stack: 'React / Next.js',
-    image:
-      '/asdf.jpg',
-    side: 'left',
-  },
-  {
-    title: 'Project 6',
-    category: 'tech',
-    stack: 'React / Next.js',
-    image:
-      '/asdf.jpg',
-    side: 'right',
+    isLive: true,
+    link: 'https://ebookdrivee.netlify.app/',
   },
 ];
 
@@ -189,19 +179,27 @@ export function Projects() {
                     isLeft ? 'pr-20 text-right' : 'pl-20 text-left'
                   }`}
                 >
-                  <div
+                  <a
+                    href={project.link ?? undefined}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`absolute ${
                       isLeft ? 'right-1/2 mr-24' : 'left-1/2 ml-24'
-                    } top-0 w-80 h-48 overflow-hidden border border-white/10 opacity-0 translate-x-5 pointer-events-none transition-all duration-[400ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:opacity-100 group-hover:translate-x-0`}
+                    } top-0 w-80 h-48 overflow-hidden border border-white/10
+                    transition-all duration-[400ms] ease-[cubic-bezier(0.23,1,0.32,1)]
+                    group-hover:w-[25rem] group-hover:h-60 ${
+                      project.link ? 'cursor-pointer' : 'cursor-default pointer-events-none'
+                    }`}
                   >
-                    <NextImage
-                      alt={project.title}
-                      className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                      src={project.image}
-                      fill
-                      unoptimized
-                    />
-                  </div>
+                    <div className="relative w-full h-full">
+                      <NextImage
+                        alt={project.title}
+                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                        src={project.image}
+                        fill
+                      />
+                    </div>
+                  </a>
                 </div>
 
                 {/* Text side */}
@@ -220,6 +218,21 @@ export function Projects() {
                       !isLeft ? 'md:justify-end' : ''
                     }`}
                   >
+                    {project.isLive && (
+                      <div className="z-20">                        
+                      <div className="flex items-center gap-2 px-3 py-1 rounded-full 
+                          bg-black/40 backdrop-blur-md border border-primary-fixed/30 
+                          shadow-[0_0_12px_rgba(200,255,0,0.2)]">
+                          <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-fixed opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-fixed shadow-[0_0_8px_rgba(200,255,0,0.8)]"></span>
+                          </span>
+                          <span className="text-[10px] md:text-xs font-headline font-bold text-primary-fixed uppercase tracking-[0.2em]">
+                            Live
+                          </span>
+                        </div>
+                      </div>
+                    )}  
                     <div>
                       <span className="block text-[8px] tracking-[0.2em] opacity-40 uppercase mb-1">
                         CATEGORY

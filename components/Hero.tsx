@@ -102,7 +102,7 @@ export function Hero() {
                 <div className="w-[100%] h-[100%] rounded-full bg-primary-fixed/5 blur-[100px]" />
               </div>
               <Image
-                src="/souvik-hero.png"
+                src="/souvik-hero.webp"
                 alt="Souvik Debnath"
                 width={800}
                 height={900}
