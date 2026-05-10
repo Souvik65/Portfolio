@@ -78,7 +78,7 @@ export function Hero() {
               View Projects
             </button>
             <a
-              href="https://drive.google.com/file/d/1c6kRGnfD3YpOgH4_JjTTOSm5EdHGgpzn/preview"
+              href="https://drive.google.com/file/d/1mBKIEboa0eP8ip-ZviDx4Eq2xkDCEzxg/preview"
               target="_blank"
               rel="noopener noreferrer"
               className="border border-outline-variant/100 text-on-surface px-5 sm:px-8 py-3 sm:py-4 font-headline font-bold uppercase tracking-widest text-xs sm:text-sm hover:bg-surface-container-highest transition-all text-center w-auto"

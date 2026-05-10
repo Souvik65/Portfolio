@@ -15,8 +15,17 @@ interface Project {
   link?: string;
   
 } 
- const ARCHIVE_PROJECTS: Project[] = [
-
+const ARCHIVE_PROJECTS: Project[] = [
+  
+  {
+    title: 'Face recognition Attendence system',
+    category: 'Real-Time Face Recognition Attendance System',
+    stack: 'Python / OpenCV / Face Recognition Library',
+    image: '/face.webp',
+    side: 'right',
+    isLive: false,
+    link: 'https://ebookdrivee.netlify.app/',
+  },
   {
     title: 'Real-Time Bus Tracking App',
     category: 'Real-time location tracking',

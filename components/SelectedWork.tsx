@@ -18,7 +18,7 @@ const projects = [
     tags: 'Cloud — Storage — Security',
     description: 'StorageVault is a secure cloud storage solution that allows users to store their files securely in the cloud. It also includes a dashboard to track file storage and usage.',
     link: 'https://storagevaultt.vercel.app/',
-    image: 'https://image.thum.io/get/width/800/crop/1000/https://storagevaultt.vercel.app/',
+    image: '/storagevault.webp',
     isLive: true,
   },
   {

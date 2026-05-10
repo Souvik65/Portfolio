@@ -122,12 +122,12 @@ export function NavBar() {
     <>
       <nav className="fixed top-0 left-0 right-0 z-40 flex justify-center items-center">
         <div className="bg-[#1c1b1b]/60 backdrop-blur-xl rounded-full mt-4 md:mt-6 mx-auto w-fit px-4 md:px-6 py-2.5 md:py-3 flex items-center gap-4 md:gap-8 shadow-[0_20px_40px_rgba(229,226,225,0.15)]">
-          <button
+          {/* <button
             onClick={() => scrollToSection('home')} 
             className="font-headline font-bold text-primary-fixed tracking-tighter text-base md:text-lg bg-transparent border-none cursor-pointer
             group uppercase hover:text-primary-fixed hover:tracking-[0.3em] transition-all duration-700" > 
             Souvik 
-          </button>
+          </button> */}
 
           {/* Desktop nav links */}
           <div className="hidden md:flex items-center gap-6">
@@ -140,8 +140,8 @@ export function NavBar() {
                   aria-current={isActive ? 'true' : undefined}
                   className={`font-headline text-xs uppercase cursor-pointer bg-transparent border-none transition-all duration-700 ease-out active:scale-90 ${
                     isActive
-                      ? 'text-primary-fixed font-bold tracking-[0.3em]'
-                      : 'text-[#e5e2e1] tracking-widest hover:text-primary-fixed hover:tracking-[0.8em]'
+                      ? 'text-primary-fixed font-bold text-9xl tracking-[0.35em] scale-110 backdrop-blur-md bg-white/10 px-4 py-2 rounded-2xl shadow-2xl transition-all duration-100 ease-out'
+                      : 'text-[#e5e2e1] tracking-widest hover:text-primary-fixed hover:tracking-[0.8em] hover:scale-105 transition-all duration-100'
                   }`}
                 >
                   {item.label}
