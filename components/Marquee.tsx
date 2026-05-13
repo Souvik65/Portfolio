@@ -26,12 +26,12 @@ const MarqueeItem = () => (
 
 export function Marquee() {
   return (
-    <motion.section 
+    <motion.section
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10%" }}
       transition={{ duration: 1, ease: "easeOut" }}
-      className="py-6 md:py-12 border-y border-outline-variant/10 bg-surface-container-lowest overflow-hidden relative z-10"
+      className="py-6 md:py-12 bg-surface-container-lowest overflow-hidden relative z-10"
     >
       <div className="animate-marquee whitespace-nowrap flex w-max">
         <MarqueeItem />

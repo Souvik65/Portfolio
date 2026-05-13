@@ -41,8 +41,8 @@ export function SelectedWork() {
     <section className="py-16 md:py-32 px-4 sm:px-6 md:px-12 bg-surface-container-low" id="work">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-24 gap-4">
-          <h2 className="font-headline font-black text-6xl sm:text-6xl md:text-9xl uppercase leading-[0.8]">
-            Selected <br /><span className="text-primary-fixed">Projects</span>
+          <h2 className="font-headline font-black uppercase leading-[0.8]">
+            <span className='text-xl sm:text-3xl md:text-5xl'>FEATURED</span><br /> <span className="text-6xl sm:text-6xl md:text-9xl text-primary-fixed">PROJECTS</span>
           </h2>
           <div className="text-on-surface-variant font-headline uppercase tracking-widest text-sm mt-4 md:mt-0">
             <button
@@ -60,7 +60,7 @@ export function SelectedWork() {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group block relative py-6 sm:py-8 md:py-16 border-t ${index === projects.length - 1 ? 'border-b' : ''} border-outline-variant/10 overflow-hidden transition-colors duration-500 hover:bg-surface-container-highest/20 cursor-pointer no-underline text-inherit`}
+              className={`group block relative py-6 sm:py-8 md:py-16 border-t ${index === projects.length - 1 ? 'border-b' : ''} border-outline-variant/10 overflow-hidden transition-colors duration-500 hover:bg-surface-container-highest/20 cursor-pointer no-underline text-inherit rounded-4xl hover:shadow-[0_10px_10px_rgba(200,255,0,0.09)]`}
             >
               {project.isLive && (
                 <div className="absolute top-4 right-4 md:top-6 md:left-8 md:right-auto z-20">

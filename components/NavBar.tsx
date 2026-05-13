@@ -7,7 +7,7 @@ const NAV_ITEMS = [
   { label: 'Home', sectionId: 'home' },
   { label: 'About', sectionId: 'about' },
   { label: 'Work', sectionId: 'work' },
-  { label: 'Skills', sectionId: 'skill' },
+  { label: 'Arsenal', sectionId: 'arsenal' },
   { label: 'Projects', sectionId: 'projects' },
   { label: 'Contact', sectionId: 'contact' },
 ];
@@ -120,14 +120,16 @@ export function NavBar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-40 flex justify-center items-center">
-        <div className="bg-[#1c1b1b]/60 backdrop-blur-xl rounded-full mt-4 md:mt-6 mx-auto w-fit px-4 md:px-6 py-2.5 md:py-3 flex items-center gap-4 md:gap-8 shadow-[0_20px_40px_rgba(229,226,225,0.15)]">
-          {/* <button
-            onClick={() => scrollToSection('home')} 
-            className="font-headline font-bold text-primary-fixed tracking-tighter text-base md:text-lg bg-transparent border-none cursor-pointer
-            group uppercase hover:text-primary-fixed hover:tracking-[0.3em] transition-all duration-700" > 
-            Souvik 
-          </button> */}
+    <nav className="fixed top-0 left-0 right-0 z-40 flex justify-center items-center">
+      <div className="bg-[#1c1b1b]/60 backdrop-blur-xl rounded-full mt-4 md:mt-6 mx-auto w-fit px-4 md:px-6 py-2.5 md:py-3 flex items-center gap-5 md:gap-10 shadow-[0_20px_40px_rgba(229,226,225,0.15)]">
+          <button
+            onClick={() => scrollToSection('home')}
+            className="font-headline font-bold text-primary-fixed tracking-tighter text-base md:text-lg bg-transparent border-none cursor-pointer group uppercase pr-2"
+          >
+            Souvik Debnath
+          </button>
+          {/* Vertical Divider */}
+          <div className="hidden md:block w-[1px] h-5 bg-outline-variant/90" />
 
           {/* Desktop nav links */}
           <div className="hidden md:flex items-center gap-6">

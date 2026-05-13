@@ -27,18 +27,20 @@ export function Capabilities() {
     },
     {
       num: '06',
-      title: 'Other Skills',
+      title: 'Soft skills',
       items: ['Problem Solving', 'Teamwork', 'Communication', 'Debugging', 'Adaptability', 'Leadership'],
     },
   ];
 
   return (
-    <section className="py-16 md:py-32 px-4 sm:px-6 md:px-12 bg-background" id="skill">
-      <h2 className="font-headline font-black text-6xl sm:text-7xl md:text-9xl uppercase leading-[0.8] mb-8 md:mb-16 tracking-tight">
-        Sk<span className="text-stroke">il</span>
-        <span className="text-primary-fixed">ls</span>
-      </h2>
-      <div className="max-w-7xl mx-auto">
+    <section className="py-16 md:py-32 px-4 sm:px-6 md:px-12 bg-background" id="arsenal">
+      <h2 className="font-headline font-black text-6xl sm:text-7xl md:text-9xl leading-[0.8] mb-8 md:mb-16 tracking-tight" aria-label="Tech ARSENAL">
+        <span className="text-1xl sm:text-3xl md:text-5xl">Te</span>
+        <span className="text-1xl sm:text-3xl md:text-5xl">ch</span><br />
+        <span className="text-6xl sm:text-7xl md:text-9xl">AR</span>
+        <span className="text-stroke text-6xl sm:text-7xl md:text-9xl">SE</span>
+        <span className="text-primary-fixed text-6xl sm:text-7xl md:text-9xl">NAL</span>      </h2>
+      <div className="max-w-7xl mx-auto ">
         {/* Mobile: full-width stacked cards | Desktop: 3-col grid */}
         <div className="-mx-4 sm:mx-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-0 sm:gap-px sm:bg-outline-variant/10 sm:border sm:border-outline-variant/10">
           {categories.map((cat) => (
@@ -46,7 +48,7 @@ export function Capabilities() {
               key={cat.num}
               className="bg-background hover:bg-surface-container transition-colors duration-500 group
                          border-b border-outline-variant/10 sm:border-b-0 sm:border-0
-                         px-4 py-5 sm:px-8 sm:py-8 md:px-12 md:py-12"
+                         px-4 py-5 sm:px-8 sm:py-8 md:px-12 md:py-12 "
             >
               {/* Number + Title row */}
               <div className="flex items-start gap-3 mb-3 sm:mb-4 md:mb-6">

@@ -38,7 +38,7 @@ export function Hero() {
     <section
       ref={ref}
       id="home"
-      className="min-h-[100svh] flex flex-col justify-center px-4 sm:px-6 md:px-12 pt-20 md:pt-24 pb-0 sm:pb-8 md:pb-24 relative z-20 bg-[#0a0a0a] overflow-hidden"
+      className="min-h-[100svh] flex flex-col justify-center px-4 sm:px-6 md:px-12 pt-20 md:pt-24 pb-0 sm:pb-8 md:pb-24 relative z-20 bg-gradient-to-b from-[#0a0a0a] to-surface-container-lowest overflow-hidden"
     >
       {/* Parallax Background */}
       <motion.div
@@ -73,7 +73,7 @@ export function Hero() {
                   .getElementById("work")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="bg-primary-fixed text-on-primary-fixed px-5 sm:px-8 py-3 sm:py-4 font-headline font-bold uppercase tracking-widest text-xs sm:text-sm hover:brightness-110 transition-all active:scale-95 flex items-center justify-center gap-2 w-auto min-w-0 sm:min-w-[180px]"
+              className="bg-primary-fixed rounded-full text-on-primary-fixed px-5 sm:px-8 py-3 sm:py-4 font-headline font-bold uppercase tracking-widest text-xs sm:text-sm hover:brightness-110 transition-all active:scale-95 flex items-center justify-center gap-2 w-auto min-w-0 sm:min-w-[180px] shadow-[0_5px_30px_rgba(200,255,0,0.35)]"
             >
               View Projects
             </button>
@@ -81,7 +81,7 @@ export function Hero() {
               href="https://drive.google.com/file/d/1mBKIEboa0eP8ip-ZviDx4Eq2xkDCEzxg/preview"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-outline-variant/100 text-on-surface px-5 sm:px-8 py-3 sm:py-4 font-headline font-bold uppercase tracking-widest text-xs sm:text-sm hover:bg-surface-container-highest transition-all text-center w-auto"
+              className="border rounded-[2rem] border-outline-variant/100 text-on-surface px-5 sm:px-8 py-3 sm:py-4 font-headline font-bold uppercase tracking-widest text-xs sm:text-sm hover:bg-surface-container-highest transition-all text-center w-auto shadow-[0_5px_30px_rgba(229,226,225,0.09)]"
             >
               Resume
             </a>
@@ -89,8 +89,7 @@ export function Hero() {
         </div>
 
         {/* 3D model on desktop, static image on mobile */}
-        <div className="md:col-span-7 flex justify-center md:justify-end relative h-[400px] sm:h-[480px] md:h-[600px]">
-          {isMobile ? (
+        <div className="md:col-span-7 rounded-br-[60px] flex justify-center md:justify-end relative h-[400px] sm:h-[480px] md:h-[600px]">          {isMobile ? (
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -118,6 +117,8 @@ export function Hero() {
           )}
         </div>
       </div>
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-surface-container-lowest to-transparent pointer-events-none z-30" />
+
     </section>
   );
 }
