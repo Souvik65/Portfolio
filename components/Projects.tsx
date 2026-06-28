@@ -38,11 +38,11 @@ const ARCHIVE_PROJECTS: Project[] = [
   {
     title: 'E-Commerce website',
     category: 'E-Commerce/Freelance project',
-    stack: 'React / TypeScript / Vite / CSS',
+    stack: 'Next.js / TypeScript / Tailwind CSS /PostgreSQL',
     image: '/blushycheeks.webp',
     side: 'right',
     isLive: true,
-    link: 'https://blushy-cheeks.vercel.app/',
+    link: 'https://blushycheeks.vercel.app/',
   },
   {
     title: 'Photography Portfolio',
