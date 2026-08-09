@@ -124,9 +124,9 @@ export function NavBar() {
       <div className="bg-[#1c1b1b]/60 backdrop-blur-xl rounded-full mt-4 md:mt-6 mx-auto w-fit px-4 md:px-6 py-2.5 md:py-3 flex items-center gap-5 md:gap-10 shadow-[0_20px_40px_rgba(229,226,225,0.15)]">
           <button
             onClick={() => scrollToSection('home')}
-            className="font-headline font-bold text-primary-fixed tracking-tighter text-base md:text-lg bg-transparent border-none cursor-pointer group uppercase pr-2"
+            className="font-headline font-bold text-primary-fixed tracking-tighter text-base md:text-lg bg-transparent border-none cursor-pointer group pr-2"
           >
-            Souvik Debnath
+            SOUVIK DEBNATH
           </button>
           {/* Vertical Divider */}
           <div className="hidden md:block w-[1px] h-5 bg-outline-variant/90" />

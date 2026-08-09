@@ -1,51 +1,69 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import React, { useRef } from 'react';
+
+gsap.registerPlugin(useGSAP);
 
 export function Preloader() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [progress, setProgress] = useState(0);
+    const preloaderRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (progress >= 100) {
-      const timeout = setTimeout(() => setIsLoading(false), 400);
-      return () => clearTimeout(timeout);
-    }
+    useGSAP(
+        () => {
+            const tl = gsap.timeline({
+                defaults: {
+                    ease: 'power1.inOut',
+                },
+            });
 
-    const interval = setInterval(() => {
-      setProgress((prev) => Math.min(prev + Math.floor(Math.random() * 15) + 5, 100));
-    }, 100);
+            tl.to('.name-text span', {
+                y: 0,
+                stagger: 0.05,
+                duration: 0.2,
+            });
 
-    return () => clearInterval(interval);
-  }, [progress]);
+            tl.to('.preloader-item', {
+                delay: 1,
+                y: '100%',
+                duration: 0.5,
+                stagger: 0.1,
+            })
+                .to('.name-text span', { autoAlpha: 0 }, '<0.5')
+                .to(
+                    preloaderRef.current,
+                    {
+                        autoAlpha: 0,
+                    },
+                    '<1',
+                );
+        },
+        { scope: preloaderRef },
+    );
 
-  return (
-    <AnimatePresence>
-      {isLoading && (
-        <motion.div
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: [0.65, 0, 0.35, 1] }}
-          className="fixed inset-0 z-[1000] bg-surface-container-low flex flex-col items-center justify-center p-12"
-        >
-          <div className="w-full max-w-4xl flex flex-col">
-            <div className="font-headline font-bold text-primary-fixed tracking-tighter text-2xl mb-4">Loading...</div>
-            <div className="h-[1px] w-full bg-surface-container-highest relative overflow-hidden">
-              <motion.div 
-                className="absolute inset-0 bg-primary-fixed"
-                initial={{ width: '0%' }}
-                animate={{ width: `${progress}%` }}
-                transition={{ ease: 'linear', duration: 0.1 }}
-              />
-            </div>
-            <div className="flex justify-between mt-4 font-headline text-on-surface-variant uppercase tracking-widest text-xs">
-              <span>Initializing Core</span>
-              <span className="text-primary-fixed">{Math.min(progress, 100)}%</span>
-            </div>
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
+    return (
+        <div className="fixed inset-0 z-[9999] flex" ref={preloaderRef}>
+            <div className="preloader-item h-full w-[11.111%] bg-black"></div>
+            <div className="preloader-item h-full w-[11.111%] bg-black"></div>
+            <div className="preloader-item h-full w-[11.111%] bg-black"></div>
+            <div className="preloader-item h-full w-[11.111%] bg-black"></div>
+            <div className="preloader-item h-full w-[11.111%] bg-black"></div>
+            <div className="preloader-item h-full w-[11.111%] bg-black"></div>
+            <div className="preloader-item h-full w-[11.111%] bg-black"></div>
+            <div className="preloader-item h-full w-[11.111%] bg-black"></div>
+            <div className="preloader-item h-full w-[11.111%] bg-black"></div>
+
+
+            <p className="name-text flex text-[20vw] lg:text-[200px] font-anton text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 leading-none overflow-hidden text-white pointer-events-none">
+                <span className="inline-block translate-y-full">S</span>
+                <span className="inline-block translate-y-full">O</span>
+                <span className="inline-block translate-y-full">U</span>
+                <span className="inline-block translate-y-full">V</span>
+                <span className="inline-block translate-y-full">I</span>
+                <span className="inline-block translate-y-full">K</span>
+            </p>
+        </div>
+    );
 }
+
+export default Preloader;

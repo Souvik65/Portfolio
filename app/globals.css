@@ -69,7 +69,8 @@ body {
   --font-body: var(--font-inter);
   --font-label: var(--font-inter);
 
-  --animate-marquee: marquee 20s linear infinite;
+
+  --animate-marquee: marquee 30s linear infinite;
   --animate-spin-slow: spin-slow 8s linear infinite;
 
   @keyframes marquee {
@@ -82,6 +83,10 @@ body {
   }
 }
 
+@theme inline {
+  --font-anton: var(--font-anton);
+}
+
 @layer utilities {
   .text-stroke {
     -webkit-text-stroke: 1px rgba(250, 248, 247, 0.612);
@@ -89,6 +94,10 @@ body {
   }
   .grain-overlay {
     background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBXZXgj0pYekhToudYBbJka07cnc7uL44YH6bswPVywut7sapkqMrvx3SrHtw8x3DwvFR9JgRnxKf2WIeWM_XjnJabigC4M-prYWG5yqYd3jGCyY9R2EPiiU-Ua3d_0qOEqyvL44gU3DlM9k-qKV4NT8buFL6ERqeB_oflwgyqe4Mv_roqYLsSmTFG17KIRtur5IjeCsmrGc60Fb5hdwkybnwFz8xcxrH7IFfPiD7e_7ayu67Nc46GT8wFHFS_4ft4gLXF1WLNtEuM');
+  }
+  .animate-marquee:hover,
+  .group:hover .animate-marquee {
+    animation-play-state: paused;
   }
 }
 

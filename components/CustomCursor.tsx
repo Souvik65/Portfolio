@@ -1,10 +1,11 @@
-'use client';
+                         'use client';
 
 import { useEffect, useState } from 'react';
 import { motion, useSpring } from 'motion/react';
 
 export function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
+  const [hasMoved, setHasMoved] = useState(false);
 
   const followerX = useSpring(0, { stiffness: 150, damping: 20 });
   const followerY = useSpring(0, { stiffness: 150, damping: 20 });
@@ -16,6 +17,7 @@ export function CustomCursor() {
     const moveCursor = (e: MouseEvent) => {
       followerX.set(e.clientX);
       followerY.set(e.clientY);
+      if (!hasMoved) setHasMoved(true);
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -52,7 +54,7 @@ export function CustomCursor() {
       window.removeEventListener('mousemove', moveCursor);
       window.removeEventListener('mouseover', handleMouseOver);
     };
-  }, [followerX, followerY]);
+  }, [followerX, followerY, hasMoved]);
 
   return (
     <>
@@ -68,6 +70,7 @@ export function CustomCursor() {
           backgroundColor: isHovering ? 'rgba(200, 255, 0, 1)' : 'transparent',
           borderColor: isHovering ? 'transparent' : 'rgba(200, 255, 0, 0.5)',
           mixBlendMode: isHovering ? 'difference' : 'normal',
+          opacity: hasMoved ? 1 : 0,
         }}
         transition={{ type: 'tween', ease: 'easeOut', duration: 0.15 }}
       />
