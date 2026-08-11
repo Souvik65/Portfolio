@@ -55,7 +55,7 @@ export function Hero() {
           <h1 className="font-headline font-black text-[clamp(3.7rem,9vw,12rem)] leading-[0.85] tracking-tighter uppercase">
             Software <br />
             <span className="text-primary-fixed">Developer</span> <br />
-            <span className="text-stroke">& UI Engineer</span>
+            {/* <span className="text-stroke">& UI Engineer</span> */}
           </h1>
         </div>
 
