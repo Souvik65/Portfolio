@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { MagneticButton } from "@/components/MagneticButton";
 
 const InteractiveHead = dynamic(
   () => import("./InteractiveHead").then((mod) => mod.InteractiveHead),
@@ -77,14 +78,16 @@ export function Hero() {
             >
               View Projects
             </button>
-            <a
-              href="https://drive.google.com/file/d/1mBKIEboa0eP8ip-ZviDx4Eq2xkDCEzxg/preview"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border rounded-[2rem] border-outline-variant/100 text-on-surface px-5 sm:px-8 py-3 sm:py-4 font-headline font-bold uppercase tracking-widest text-xs sm:text-sm hover:bg-surface-container-highest transition-all text-center w-auto shadow-[0_5px_30px_rgba(229,226,225,0.09)]"
-            >
-              Resume
-            </a>
+            <MagneticButton strength={0.35} radius={360}>
+              <a
+                href="https://drive.google.com/file/d/1mBKIEboa0eP8ip-ZviDx4Eq2xkDCEzxg/preview"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border rounded-[2rem] border-outline-variant/100 text-on-surface px-5 sm:px-8 py-3 sm:py-4 font-headline font-bold uppercase tracking-widest text-xs sm:text-sm hover:bg-surface-container-highest transition-all text-center w-auto shadow-[0_5px_30px_rgba(229,226,225,0.09)] block"
+              >
+                Resume
+              </a>
+            </MagneticButton>
           </div>
         </div>
 
