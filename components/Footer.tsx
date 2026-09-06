@@ -1,21 +1,45 @@
+'use client';
+
+import { ArrowUp } from 'lucide-react';
+
 export function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="relative w-full overflow-hidden bg-[#131313] flex flex-col justify-end p-5 sm:p-8 md:p-16">
-      <div className="mb-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-        <div className="col-span-full">
-          <p className="text-on-surface-variant max-w-xs uppercase text-xs tracking-widest leading-loose">
-            Building secure and scalable digital solutions with a focus on ethical hacking and real-world problem solving.
-          </p>
-          <div className="mt-8 md:mt-24 pointer-events-none select-none">
-            <h2 className="font-headline text-[clamp(2rem,12vw,10rem)] leading-[0.8] font-black uppercase text-[#e5e2e1] opacity-10">
+    <footer className="w-full bg-[#0a0a0a] border-t border-outline-variant/15 py-6 sm:py-8 px-4 sm:px-6 md:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-on-surface-variant/70">
+        {/* Copyright & Identity */}
+        <div className="flex items-center gap-2 text-center sm:text-left">
+          <span className="w-1.5 h-1.5 rounded-full bg-primary-fixed shrink-0" />
+          <span>
+            © {new Date().getFullYear()}{' '}
+            <strong className="text-[#e5e2e1] font-headline uppercase font-bold tracking-wider">
               Souvik Debnath
-            </h2>
-          </div>
+            </strong>{' '}
+            — Software Developer &amp; UI Engineer
+          </span>
         </div>
-      </div>
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-8 mt-8 md:mt-12 pt-6 md:pt-8">
-        <div className="text-[#e5e2e1]/40 font-headline uppercase text-[10px] tracking-[0.3em] text-center">
-          © {new Date().getFullYear()} Souvik Debnath — ALL RIGHTS RESERVED
+
+        {/* Back to Top Action */}
+        <div className="flex items-center gap-4 sm:gap-6">
+          <span className="hidden md:inline-block text-[11px] text-white/40">
+            KOLKATA, IN
+          </span>
+
+          <button
+            type="button"
+            onClick={scrollToTop}
+            className="group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-low border border-outline-variant/20 text-[#e5e2e1] hover:text-primary-fixed hover:border-primary-fixed/40 transition-all text-[11px] uppercase tracking-wider cursor-pointer active:scale-95"
+            aria-label="Scroll back to top of the page"
+          >
+            <span>Back to top</span>
+            <ArrowUp
+              size={12}
+              className="text-primary-fixed transition-transform duration-300 group-hover:-translate-y-0.5"
+            />
+          </button>
         </div>
       </div>
     </footer>
